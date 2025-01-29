@@ -21,6 +21,7 @@ function App() {
     answer_fifteen: '',
   });
   const [errors, setErrors] = useState({});
+  
   const [right_answers, setRight_answers] = useState(0);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,20 +59,12 @@ function App() {
     const newErrors = validateForm(formData);
     setErrors(newErrors);
     
-
-    if (Object.keys(newErrors).length === 0) {
-        // Form submission logic here
-        console.log('Form submitted successfully!');
-    } else {
-        console.log('Form submission failed due to validation errors.');
-        console.log(Object.keys(newErrors))
-    }
   };
 
   const validateForm = (data) => {
   
     const errors = {};
-
+    
     let answer_ok = 0
 
     let quastion_one = number_one * number_two
@@ -90,8 +83,11 @@ function App() {
       
     if (parseInt(data.answer_one) !== quastion_one) {
       errors.answer_one = "Неверно"
+      
     } else {
       answer_ok += 1
+      errors.answer_one = "Верно"
+      
     }
 
 
@@ -99,76 +95,88 @@ function App() {
       errors.answer_two = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_two = "Верно"
     }
 
     if (parseInt(data.answer_three) !== quastion_three) {
       errors.answer_three = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_three = "Верно"
     }
 
     if (parseInt(data.answer_four) !== quastion_four) {
       errors.answer_four = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_four = "Верно"
     }
 
     if (parseInt(data.answer_five) !== quastion_five) {
       errors.answer_five = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_five = "Верно"
     }
 
     if (parseInt(data.answer_six) !== quastion_six) {
       errors.answer_six = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_six = "Верно"
     }
 
     if (parseInt(data.answer_seven) !== quastion_seven) {
       errors.answer_seven = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_seven = "Верно"
     }
 
     if (parseInt(data.answer_eight) !== quastion_eight) {
       errors.answer_eight = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_eight = "Верно"
     }
 
     if (parseInt(data.answer_nine) !== quastion_nine) {
       errors.answer_nine = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_nine = "Верно"
     }
 
     if (parseInt(data.answer_ten) !== quastion_ten) {
       errors.answer_ten = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_ten = "Верно"
     }
 
     if (parseInt(data.answer_eleven) !== quastion_eleven) {
       errors.answer_eleven = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_eleven = "Верно"
     }
 
     if (parseInt(data.answer_twelve) !== quastion_twelve) {
       errors.answer_twelve = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_twelve = "Верно"
     }
 
     if (parseInt(data.answer_thirteen) !== quastion_thirteen) {
       errors.answer_thirteen = "Неверно"
     } else {
       answer_ok += 1
+      errors.answer_thirteen = "Верно"
     }
 
     setRight_answers(answer_ok);
-    console.log("Правильных ответов", answer_ok)
+    //console.log("Правильных ответов", answer_ok)
     return errors
   }
 
@@ -202,11 +210,15 @@ function App() {
               value={formData.answer_one}
               onChange={handleChange}
             />
-            {errors.answer_one && (
-              <span className="error-message">
-                {errors.answer_one}
-              </span>
-            )}
+            {errors.answer_one == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_one}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_one}
+         </span>)
+                  }
+
           </div>
           <div>
             <label className="form-label">
@@ -219,11 +231,14 @@ function App() {
               value={formData.answer_two}
               onChange={handleChange}
             />
-            {errors.answer_two && (
-              <span className="error-message">
-                {errors.answer_two}
-              </span>
-            )}
+            {errors.answer_two == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_two}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_two}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -237,11 +252,14 @@ function App() {
               value={formData.answer_three}
               onChange={handleChange}
             />
-            {errors.answer_three && (
-              <span className="error-message">
-                {errors.answer_three}
-              </span>
-            )}
+            {errors.answer_three == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_three}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_three}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -255,11 +273,14 @@ function App() {
               value={formData.answer_four}
               onChange={handleChange}
             />
-            {errors.answer_four && (
-              <span className="error-message">
-                {errors.answer_four}
-              </span>
-            )}
+            {errors.answer_four == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_four}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_four}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -273,11 +294,14 @@ function App() {
               value={formData.answer_five}
               onChange={handleChange}
             />
-            {errors.answer_five && (
-              <span className="error-message">
-                {errors.answer_five}
-              </span>
-            )}
+            {errors.answer_five == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_five}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_five}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -291,11 +315,14 @@ function App() {
               value={formData.answer_six}
               onChange={handleChange}
             />
-            {errors.answer_six && (
-              <span className="error-message">
-                {errors.answer_six}
-              </span>
-            )}
+            {errors.answer_six == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_six}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_six}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -309,11 +336,14 @@ function App() {
               value={formData.answer_seven}
               onChange={handleChange}
             />
-            {errors.answer_seven && (
-              <span className="error-message">
-                {errors.answer_seven}
-              </span>
-            )}
+            {errors.answer_seven == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_seven}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_seven}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -327,11 +357,14 @@ function App() {
               value={formData.answer_eight}
               onChange={handleChange}
             />
-            {errors.answer_eight && (
-              <span className="error-message">
-                {errors.answer_eight}
-              </span>
-            )}
+            {errors.answer_eight == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_eight}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_eight}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -345,11 +378,14 @@ function App() {
               value={formData.answer_nine}
               onChange={handleChange}
             />
-            {errors.answer_nine && (
-              <span className="error-message">
-                {errors.answer_nine}
-              </span>
-            )}
+            {errors.answer_nine == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_nine}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_nine}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -363,11 +399,14 @@ function App() {
               value={formData.answer_ten}
               onChange={handleChange}
             />
-            {errors.answer_ten && (
-              <span className="error-message">
-                {errors.answer_ten}
-              </span>
-            )}
+            {errors.answer_ten == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_ten}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_ten}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -381,11 +420,14 @@ function App() {
               value={formData.answer_eleven}
               onChange={handleChange}
             />
-            {errors.answer_eleven && (
-              <span className="error-message">
-                {errors.answer_eleven}
-              </span>
-            )}
+            {errors.answer_eleven == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_eleven}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_eleven}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -399,11 +441,14 @@ function App() {
               value={formData.answer_twelve}
               onChange={handleChange}
             />
-            {errors.answer_twelve && (
-              <span className="error-message">
-                {errors.answer_twelve}
-              </span>
-            )}
+            {errors.answer_twelve == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_twelve}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_twelve}
+         </span>)
+                  }
           </div>
 
           <div>
@@ -417,11 +462,14 @@ function App() {
               value={formData.answer_thirteen}
               onChange={handleChange}
             />
-            {errors.answer_thirteen && (
-              <span className="error-message">
-                {errors.answer_thirteen}
-              </span>
-            )}
+            {errors.answer_thirteen == "Неверно" ?
+            (<span className="error-message">
+            {errors.answer_thirteen}
+          </span>) :
+           (<span className="good-message">
+           {errors.answer_thirteen}
+         </span>)
+                  }
           </div>
 
           
@@ -431,7 +479,10 @@ function App() {
         </div>
         <div className="card">
           <div className="mb-3">
-            <strong>{message}</strong>, твой результат - {right_answers}
+            <strong>Ученик: {message}</strong>
+            <br/>
+            <strong>Правильных ответов: {right_answers}</strong>
+            
           </div>
         </div>
 
